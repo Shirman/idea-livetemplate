@@ -1,0 +1,83 @@
+<template name="ifcn" value="if (CollectionUtils.isEmpty($VAR$)) {&#10;    $END$&#10;}" description="Inserts collection is empty" toReformat="false" toShortenFQNames="true">
+  <variable name="VAR" expression="suggestFirstVariableName(&quot;Object&quot;)" defaultValue="var" alwaysStopAt="true" />
+  <context>
+    <option name="GROOVY_STATEMENT" value="true" />
+    <option name="JAVA_STATEMENT" value="true" />
+  </context>
+</template>
+<template name="ifcnn" value="if (!CollectionUtils.isEmpty($VAR$)) {&#10;    $END$&#10;}" description="if collection is not empty" toReformat="false" toShortenFQNames="true">
+  <variable name="VAR" expression="suggestFirstVariableName(&quot;Object&quot;)" defaultValue="var" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>a
+</template>
+<template name="ifse" value="if (StringUtils.isEmpty($VAR$)) {&#10;&#10;}" description="if string empty" toReformat="false" toShortenFQNames="true">
+  <variable name="VAR" expression="suggestFirstVariableName(&quot;Object&quot;" defaultValue="var" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="ifsne" value="if (!StringUtils.isEmpty($VAR$)) {&#10;&#10;}" description="if string not empty" toReformat="false" toShortenFQNames="true">
+  <variable name="VAR" expression="suggestFirstVariableName(&quot;Object&quot;)" defaultValue="var" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="mpq" value="$ENTITY$ query = new $ENTITY$();&#10;QueryWrapper&lt;$ENTITY$&gt; queryWrapper = new QueryWrapper&lt;&gt;(query);&#10;$VALUE_ENTITY$Service.list(queryWrapper);" description="mybatis plus query" toReformat="false" toShortenFQNames="true">
+  <variable name="ENTITY" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+  <variable name="VALUE_ENTITY" expression="camelCase(ENTITY)" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="mpr" value="$ENTITY$ query = new $ENTITY$();&#10;&#10;UpdateWrapper&lt;$ENTITY$&gt; updateWrapper = new UpdateWrapper&lt;&gt;();&#10;$ENTITY_VALUE$Service.remove(updateWrapper);" description="mybatis plus remove" toReformat="false" toShortenFQNames="true">
+  <variable name="ENTITY" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+  <variable name="ENTITY_VALUE" expression="camelCase(ENTITY)" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="mpu" value="$ENTITY$ query = new $ENTITY$();&#10;&#10;UpdateWrapper&lt;$ENTITY$&gt; updateWrapper = new UpdateWrapper&lt;&gt;(query);&#10;&#10;$ENTITY$ $ENTITY_VALUE$ = new $ENTITY$();&#10;$ENTITY_VALUE$Service.update($ENTITY_VALUE$ , updateWrapper);" description="mybatis plus update" toReformat="false" toShortenFQNames="true">
+  <variable name="ENTITY" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+  <variable name="ENTITY_VALUE" expression="camelCase(ENTITY)" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="spcg" value="@GetMapping(&quot;&quot;)&#10;@ApiOperation(value = &quot;&quot;, notes = &quot;&quot;)&#10;@ApiImplicitParams({&#10;        @ApiImplicitParam(name = &quot;&quot;, value = &quot;&quot;,&#10;                paramType = &quot;query&quot;, required = true, dataType = &quot;String&quot;),&#10;})&#10;public RestResult method(){&#10;    RestResult result = new RestResult();&#10;    return result;&#10;}" description="spring mvc controller get method" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="spcp" value="@PostMapping(&quot;&quot;)&#10;@ApiOperation(value = &quot;&quot;, notes = &quot;&quot;)&#10;public RestResult add(@RequestBody Object object){&#10;    RestResult result = new RestResult();&#10;    return result;&#10;}" description="spring mvc controller post method" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="spcpa" value="@GetMapping(&quot;page&quot;)&#10;@ApiOperation(value = &quot;获取分页&quot;, notes = &quot;获取分页&quot;)&#10;@ApiImplicitParams({&#10;        @ApiImplicitParam(name = &quot;pageSize&quot;, value = &quot;pageSize&quot;,&#10;                paramType = &quot;query&quot;, required = true, dataType = &quot;Long&quot;),&#10;        @ApiImplicitParam(name = &quot;pageNum&quot;, value = &quot;pageNum&quot;,&#10;                paramType = &quot;query&quot;, required = true, dataType = &quot;Long&quot;),&#10;})&#10;public RestResult page(@RequestParam(required = false, defaultValue = &quot;10&quot;) Integer pageSize,&#10;                       @RequestParam(required = false, defaultValue = &quot;1&quot;) Integer pageNum){&#10;    RestResult result = new RestResult();&#10;    LoginHelperInRedis.TokenInfo tokenInfo = loginHelperInRedis.validToken();&#10;    Long userId = tokenInfo.getUserId();&#10;    Page&lt;$ENTITY$&gt; page = new PageFactory&lt;$ENTITY$&gt;().defaultPage();&#10;    $ENTITY$ query = new $ENTITY$();&#10;    QueryWrapper&lt;$ENTITY$&gt; queryWrapper = new QueryWrapper&lt;&gt;(query);&#10;    service.page(page, queryWrapper);&#10;    result.data(page);&#10;    return result;&#10;}" description="spring controller page" toReformat="false" toShortenFQNames="true">
+  <variable name="ENTITY" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="spcu" value="@GetMapping(&quot;update&quot;)&#10;@ApiOperation(value = &quot;更新&quot;, notes = &quot;更新&quot;)&#10;@ApiImplicitParams({&#10;        @ApiImplicitParam(name = &quot;Long&quot;, value = &quot;id&quot;,&#10;                paramType = &quot;query&quot;, required = true, dataType = &quot;String&quot;),&#10;})&#10;public RestResult deleteMyAddress(@RequestParam Long id){&#10;    RestResult result = new RestResult();&#10;    Long userId = loginHelperInRedis.userId();&#10;&#10;    $ENTITY$ updateEntity = new $ENTITY$();&#10;&#10;    $ENTITY$ query = new $ENTITY$();&#10;    UpdateWrapper&lt;$ENTITY$&gt; updateWrapper = new UpdateWrapper&lt;&gt;(query);&#10;    $VALUE_ENTITY$Service.update(updateEntity, updateWrapper);&#10;    return result;&#10;}" description="spring mvc controller update" toReformat="false" toShortenFQNames="true">
+  <variable name="ENTITY" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+  <variable name="VALUE_ENTITY" expression="camelCase(String)" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+    <option name="JAVA_COMMENT" value="false" />
+  </context>
+</template>
+<template name="sps" value="private static Logger logger = LoggerFactory.getLogger($CLASS_NAME$.class);&#10;&#10;@Autowired&#10;private $ENTITY$Mapper $VAL_ENTITY$Mapper;&#10;&#10;public void update$ENTITY$ById($ENTITY$ $VAL_ENTITY$){&#10;    Long id = $VAL_ENTITY$.getId();&#10;    if(null == id){&#10;        throw new BussinessException(&quot;id不能为空&quot;);&#10;    }&#10;    $VAL_ENTITY$Mapper.updateByPrimaryKeySelective($VAL_ENTITY$);&#10;}&#10;&#10;public void update$ENTITY$ByExample($ENTITY$ $VAL_ENTITY$, $ENTITY$ condition){&#10;    Example example = new Example($ENTITY$.class);&#10;    example.createCriteria().andEqualTo(condition);&#10;    $VAL_ENTITY$Mapper.updateByExampleSelective($VAL_ENTITY$, example);&#10;}&#10;&#10;public void add$ENTITY$($ENTITY$ $VAL_ENTITY$){&#10;    $VAL_ENTITY$Mapper.insertSelective($VAL_ENTITY$);&#10;}&#10;&#10;public void delete$ENTITY$ById(Long $VAL_ENTITY$Id){&#10;    if ($VAL_ENTITY$Id == null) {&#10;        throw new BussinessException(&quot;id不能为空&quot;);&#10;    }&#10;    $VAL_ENTITY$Mapper.deleteByPrimaryKey($VAL_ENTITY$Id);&#10;}&#10;&#10;public $ENTITY$ find$ENTITY$ById(Long $VAL_ENTITY$Id){&#10;    if ($VAL_ENTITY$Id == null) {&#10;        throw new BussinessException(&quot;id不能为空&quot;);&#10;    }&#10;    return $VAL_ENTITY$Mapper.selectByPrimaryKey($VAL_ENTITY$Id);&#10;}&#10;&#10;public List&lt;$ENTITY$&gt; find$ENTITY$s($ENTITY$ $VAL_ENTITY$){&#10;    return $VAL_ENTITY$Mapper.select($VAL_ENTITY$);&#10;}&#10;&#10;public $ENTITY$ findOne$ENTITY$($ENTITY$ $VAL_ENTITY$){&#10;    return $VAL_ENTITY$Mapper.selectOne($VAL_ENTITY$);&#10;}&#10;&#10;public PageInfo&lt;$ENTITY$&gt; query$ENTITY$($ENTITY$ $VAL_ENTITY$, Integer pageNum, Integer pageSize){&#10;    PageHelper.startPage(pageNum,pageSize);&#10;    Example example = new Example($ENTITY$.class);&#10;    example.createCriteria().andEqualTo($VAL_ENTITY$);&#10;    example.orderBy(&quot;modifyDate&quot;).desc();&#10;    List&lt;$ENTITY$&gt; list = $VAL_ENTITY$Mapper.selectByExample(example);&#10;    PageInfo&lt;$ENTITY$&gt; pageInfo = new PageInfo&lt;&gt;(list);&#10;    return pageInfo;&#10;}" description="spring mvc service" toReformat="false" toShortenFQNames="true">
+  <variable name="CLASS_NAME" expression="className()" defaultValue="" alwaysStopAt="true" />
+  <variable name="ENTITY" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+  <variable name="VAL_ENTITY" expression="camelCase(ENTITY)" defaultValue="" alwaysStopAt="true" />
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
+<template name="tnb" value="throw new BussinessException(&quot;&quot;);" description="throw new BussinessException" toReformat="false" toShortenFQNames="true">
+  <context>
+    <option name="JAVA_CODE" value="true" />
+  </context>
+</template>
